@@ -93,16 +93,40 @@ def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
-    start_time = time.time()
 
-    # display the most common month
 
-    # display the most common day of week
+start_time = time.time()
+# convert the Start Time column to datetime
+df['Start Time'] = pd.to_datetime(df['Start Time'])
 
-    # display the most common start hour
+# TO DO: display the most common month
+## extract month from the Start Time column to create an month column
+df['month'] = df['Start Time'].dt.month
+## find the most popular month
+popular_month = df['month'].mode()[0]
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-' * 40)
+# TO DO: display the most common day of week
+## extract month from the Start Time column to create an month column
+df['week'] = df['Start Time'].dt.week
+## find the most popular month
+popular_week = df['week'].mode()[0]
+
+# TO DO: display the most common start hour
+## extract hour from the Start Time column to create an hour column
+df['hour'] = df['Start Time'].dt.hour
+
+## find the most popular hour
+popular_hour = df['hour'].mode()[0]
+
+print('Most Popular Month:', popular_month)
+print('Most Popular Week:', popular_week)
+print('Most Popular Start Hour:', popular_hour)
+
+print("\nThis took %s seconds." % (time.time() - start_time))
+print('-' * 40)
+
+print("\nThis took %s seconds." % (time.time() - start_time))
+print('-' * 40)
 
 
 def station_stats(df):
@@ -141,11 +165,39 @@ def user_stats(df):
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
-    # Display counts of user types
+    # TO DO: Display counts of user types
+    ## print value counts for each user type
+    user_types = df['User Type'].value_counts()
 
-    # Display counts of gender
+    print(user_types)
 
-    # Display earliest, most recent, and most common year of birth
+    # TO DO: Display counts of gender
+    ## print value counts for each gender
+
+    while True:
+        if ("Gender" in df.columns):
+            gender = df['Gender'].value_counts()
+            print('gender')
+            print(gender)
+            break
+        else:
+            print('Washington does not have data about gender of customer')
+            break
+
+    # TO DO: Display earliest, most recent, and most common year of birth
+    while True:
+        # to find a columns in df
+        if ("Birth Year" in df.columns):
+            earliest = min(df['Birth Year'])
+            recent = max(df['Birth Year'])
+            common_year = df['Birth Year'].mode()[0]
+            print('Earliest birth year is in: %d' % earliest)
+            print('Most recent birth year is in: %d' % recent)
+            print('Most common birth year is in: %d' % common_year)
+            break
+        else:
+            print('Washington does not have data about birth year of customer')
+            break
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-' * 40)
