@@ -16,6 +16,13 @@ There are four files required in this project:
 * new_york_city.csv, data set for bike share system in New York City
 * washington.csv, data set for bike share system in Washington
 
+### Software Requirement
+If we want to complete this project in our local machine (not in Udacity workspace), software needed to accomplish it are:
+* Python 3, NumPy, and pandas installed using Anaconda
+* A text editor, like Sublime or Atom (I recommend VS Code)
+* A terminal application (Terminal on Mac and Linux or Git Bash on Windows).
+
 ### Credits
 To be added later.
+
 
